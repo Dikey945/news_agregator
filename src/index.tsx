@@ -3,13 +3,38 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { HashRouter } from 'react-router-dom';
+import { StyledEngineProvider } from '@mui/material';
+import { createTheme, ThemeProvider } from '@mui/material';
+import CssBaseline from '@mui/material/CssBaseline';
+
+const theme = createTheme({
+  typography: {
+    fontFamily: ['Montserrat', 'sans-serif'].join(','),
+  },
+  transitions: {
+    duration: {
+      standard: 300,
+    },
+    easing: {
+      easeInOut: 'cubic-bezier(0.4, 0, 0.2, 1)',
+    },
+  },
+});
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <App />
+    <StyledEngineProvider injectFirst>
+      <ThemeProvider theme={theme}>
+          <HashRouter>
+            <CssBaseline />
+            <App />
+          </HashRouter>
+      </ThemeProvider>
+    </StyledEngineProvider>
   </React.StrictMode>
 );
 
