@@ -1,0 +1,64 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+@import '../../styles/extends';
+
+.article {
+  margin: 0 auto;
+  min-height: 100vh;
+
+  &__cover {
+    position: absolute;
+    top: 0;
+    z-index: -1;
+    width: 100%;
+    height: 25vh;
+    object-fit: cover;
+  }
+  &__wrapper {
+    @extend %container;
+    display: block;
+    margin: 0 auto;
+  }
+
+  &__content {
+    padding: 50px 75px;
+    height: 80vh;
+    margin-top: 10vh;
+    background-color: white;
+    border-radius: 10px;
+    border: $c-border solid 1px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+  }
+
+  &__title {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    display: block;
+    width: 100%;
+    text-align: center;
+  }
+
+  &__summary {
+    font-size: 1rem;
+    display: block;
+    width: 100%;
+    text-align: center;
+  }
+
+  &__back {
+    display: flex;
+    gap: 8px;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 35px;
+    font-size: 1rem;
+    color: $c-primary;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
+    margin-left: 75px;
+
+    &:hover {
+      color: $c-secondary;
+    }
+  }
+}

@@ -16,7 +16,7 @@ function App() {
             <ArticleProvider>
               <HomePage />
             </ArticleProvider>} />
-          <Route path=":articleId" element={<ArticlePage />} />
+          <Route path="/:articleId" element={<ArticlePage />} />
         </Route>
         <Route path="*" element={<ErrorPage />} />
       </Routes>
