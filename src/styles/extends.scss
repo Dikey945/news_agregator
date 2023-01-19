@@ -1,0 +1,13 @@
+@import './mixins';
+
+%container {
+  max-width: 300px;
+
+  @include onTablet {
+    max-width: 500px;
+  }
+
+    @include onDesktop {
+        max-width: 1100px;
+    }
+}

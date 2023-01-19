@@ -1,0 +1,35 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.articles-block {
+  margin-top: 50px;
+
+  &__count {
+    @include bold-text;
+  }
+
+  &__horizontal-line {
+    width: 100%;
+    height: 1px;
+    background-color: $c-border;
+    margin-top: 10px
+  }
+
+  &__list {
+    margin-top: 45px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    list-style: none;
+
+    @include onTablet {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 30px;
+    }
+
+    @include onDesktop {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 45px;
+    }
+  }
+}
