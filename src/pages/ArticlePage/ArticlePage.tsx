@@ -6,14 +6,19 @@ import {useAsync} from "../../hooks/useAsync";
 import {getArticleById} from "../../api/articles";
 import {useParams} from "react-router-dom";
 import WestIcon from '@mui/icons-material/West';
-
+import {ErrorPage} from "../ErrorPage";
+import {Loader} from "../../components/Loader";
 export const ArticlePage: React.FC = () => {
   const { articleId } = useParams();
   console.log(articleId);
-  const { value: article} = useAsync(() => getArticleById(articleId))
+  const { error, loading, value: article} = useAsync(() => getArticleById(articleId))
 
   return (
-    <Box component="section" className="article">
+    loading
+    ? <Loader />
+    :error
+    ? <ErrorPage />
+    : <Box component="section" className="article">
       <Box
         className="article__cover"
         component="img"
