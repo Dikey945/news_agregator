@@ -26,6 +26,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -50,6 +51,7 @@
     ]
   },
   "devDependencies": {
-    "@types/react-highlight-words": "^0.16.4"
+    "@types/react-highlight-words": "^0.16.4",
+    "gh-pages": "^4.0.0"
   }
 }
