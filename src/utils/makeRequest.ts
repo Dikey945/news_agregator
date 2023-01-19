@@ -1,6 +1,6 @@
 import axios, {AxiosError, AxiosResponse } from "axios";
 
-const SERVER_URL = 'http://localhost:5050';
+const SERVER_URL = 'https://api.spaceflightnewsapi.net/v3';
 
 const api = axios.create({
   baseURL: SERVER_URL

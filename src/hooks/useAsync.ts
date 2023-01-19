@@ -7,12 +7,12 @@ export interface State<T> {
   execute: (...params: any[]) => void;
 }
 
-interface Options<T> {
+interface Options {
   initialLoading?: boolean;
   dependencies?: any[];
 }
 
-export function useAsync<T>(func: (...params: any[]) => Promise<T>, options?: Options<T>): State<T> {
+export function useAsync<T>(func: (...params: any[]) => Promise<T>, options?: Options): State<T> {
   const { execute, ...state } = useAsyncInternal(func, options);
 
   useEffect(() => {
@@ -22,11 +22,7 @@ export function useAsync<T>(func: (...params: any[]) => Promise<T>, options?: Op
   return { execute, ...state};
 }
 
-export function useAsyncFn<T>(func: (...params: any[]) => Promise<T>, options?: Options<T>): State<T> {
-  return useAsyncInternal(func, options);
-}
-
-const useAsyncInternal = <T>(func: (...params: any[]) => Promise<T>, options?: Options<T>): State<T> => {
+const useAsyncInternal = <T>(func: (...params: any[]) => Promise<T>, options?: Options): State<T> => {
   const { initialLoading = false, dependencies = [] } = options || {};
   const [loading, setLoading] = useState(initialLoading);
   const [value, setValue] = useState<T | null>(null);
@@ -48,6 +44,7 @@ const useAsyncInternal = <T>(func: (...params: any[]) => Promise<T>, options?: O
       .finally(() => {
         setLoading(false);
       });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, dependencies);
 
   return { loading, error, value, execute };
