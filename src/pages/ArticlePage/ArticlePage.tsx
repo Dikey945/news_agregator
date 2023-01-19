@@ -16,7 +16,7 @@ export const ArticlePage: React.FC = () => {
   return (
     loading
     ? <Loader />
-    :error
+    : error
     ? <ErrorPage />
     : <Box component="section" className="article">
       <Box

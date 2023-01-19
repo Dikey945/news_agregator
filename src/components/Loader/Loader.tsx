@@ -6,7 +6,7 @@ import Box from '@mui/material/Box';
 export const Loader: React.FC = () => {
   return (
     <Box className="loader" sx={{ display: 'flex' }}>
-      <CircularProgress className="loaderç"/>
+      <CircularProgress/>
     </Box>
   );
 }
