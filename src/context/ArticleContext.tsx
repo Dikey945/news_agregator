@@ -30,15 +30,13 @@ export const ArticleProvider: React.FC<Props> = ({children}) => {
       return setFilteredArticles(articles || [])
     }
 
-    const loweredQuery = query.toLowerCase();
-    const filteredByTitle: Article[] | undefined = articles?.filter((article) => {
-      const title = article.title.toLowerCase();
-      return title.includes(loweredQuery)
-    });
-    const filteredBySummary: Article[] | undefined = articles?.filter((article) => {
-      const summary = article.summary.toLowerCase();
-      return summary.includes(loweredQuery)
-    });
+    const loweredQueryArray = query.toLowerCase().split(' ');
+    const filteredByTitle: Article[] | undefined = articles?.filter((article) => (
+      loweredQueryArray.some((queryWord) => (article.title.toLowerCase().includes(queryWord)))
+    ));
+    const filteredBySummary: Article[] | undefined = articles?.filter((article) => (
+      loweredQueryArray.some((queryWord) => (article.summary.toLowerCase().includes(queryWord)))
+    ));
 
     const unitedArticles = ([...filteredByTitle!, ...filteredBySummary!])
     const uniqueArticles = [...new Set(unitedArticles)]
